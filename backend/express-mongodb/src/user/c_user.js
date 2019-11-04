@@ -6,7 +6,15 @@ const controller_user = {};
 
 
 controller_user.list = async (req,res) => {
-    const users = await User.find({});
+    const {order, search} = req.query;
+    const filter = search ? {firstName: search} : {};
+    console.log(filter);
+    let users = null;
+    if (order) {
+        users = await User.find(filter).sort({firstName: order});
+    } else {
+        users = await User.find(filter);
+    }
     res.status(200).send({users});
 }
 

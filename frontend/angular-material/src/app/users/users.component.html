@@ -6,10 +6,10 @@
     <div class="j-content-around flex-center-v">
       <mat-form-field class="w-70">
         <mat-label>Search</mat-label>
-        <input matInput autocomplete="off" placeholder="">
+        <input matInput autocomplete="off" placeholder="" [formControl]="search">
       </mat-form-field>
-      <button mat-stroked-button color="primary" type="button">Ascendente</button>
-      <button mat-stroked-button color="primary" type="button">Descendente</button>
+      <button mat-stroked-button color="primary" type="button" class="h-36" (click)="sort('asc')">ASC</button>
+      <button mat-stroked-button color="primary" type="button" class="h-36" (click)="sort('desc')">DESC</button>
     </div>
     <table mat-table [dataSource]="dataSource" class="full-width">
 
@@ -31,6 +31,14 @@
       <ng-container matColumnDef="age">
         <th mat-header-cell *matHeaderCellDef> Age </th>
         <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button type="button" matTooltip="Editar" (click)="viewEdit(element)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button type="button" matTooltip="Eliminar" (click)="delete(element._id)"><mat-icon>delete</mat-icon></button>
+        </td>
       </ng-container>
       
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

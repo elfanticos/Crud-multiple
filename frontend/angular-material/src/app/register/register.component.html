@@ -1,32 +1,33 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Registro</mat-card-title>
+    <mat-card-title>{{edit ? 'Editar' : 'Registrar'}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form action="">
+    <form [formGroup]="newForm">
       <mat-form-field>
         <mat-label>FirstName</mat-label>
-        <input matInput autocomplete="off" placeholder="">
+        <input matInput autocomplete="off" placeholder="" formControlName="firstName">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>LastName</mat-label>
-        <input matInput autocomplete="off" placeholder="">
+        <input matInput autocomplete="off" placeholder="" formControlName="lastName">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Age</mat-label>
-        <input matInput autocomplete="off" placeholder="">
+        <input matInput autocomplete="off" placeholder="" formControlName="age">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput autocomplete="off" placeholder="">
+        <input matInput autocomplete="off" placeholder="" formControlName="email">
       </mat-form-field>
       <mat-card-actions>
         <div class="flex">
           <span class="cs-spacer"></span>
-          <button mat-button type="button">Limpiar</button>
-          <button mat-stroked-button color="primary" type="button">Registrar</button>
+          <button mat-button type="button" (click)="clear()">Limpiar</button>
+          <button mat-stroked-button color="primary" type="button" (click)="submit()" *ngIf="!edit">Registrar</button>
+          <button mat-stroked-button color="primary" type="button" (click)="editUser()" *ngIf="edit">Editar</button>
         </div>
       </mat-card-actions>
     </form>

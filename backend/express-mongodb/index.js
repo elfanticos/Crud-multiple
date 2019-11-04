@@ -15,6 +15,7 @@ app
     .use(morgan('dev'))
     .use(bodyParser.urlencoded({extended: false}))
     .use(bodyParser.json())
+    .use(cors())
 
 // Routes
 const r_user = require('./src/user/r_user');

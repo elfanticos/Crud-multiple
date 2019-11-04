@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,7 +13,10 @@ import {
    MatTableModule,
    MatPaginatorModule,
    MatSortModule,
-   MatButtonModule
+   MatButtonModule,
+   MatSnackBarModule,
+   MatIconModule,
+   MatTooltipModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -31,6 +35,7 @@ import { UsersComponent } from './users/users.component';
       BrowserAnimationsModule,
       FormsModule,
       ReactiveFormsModule,
+      HttpClientModule,
       MatCardModule,
       MatFormFieldModule,
       MatInputModule,
@@ -38,7 +43,10 @@ import { UsersComponent } from './users/users.component';
       MatTableModule,
       MatPaginatorModule,
       MatSortModule,
-      MatButtonModule
+      MatButtonModule,
+      MatSnackBarModule,
+      MatIconModule,
+      MatTooltipModule
    ],
    providers: [],
    bootstrap: [
