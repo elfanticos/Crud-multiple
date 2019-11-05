@@ -7,8 +7,7 @@ const controller_user = {};
 
 controller_user.list = async (req,res) => {
     const {order, search} = req.query;
-    const filter = search ? {firstName: search} : {};
-    console.log(filter);
+    const filter = search ? {firstName: {$regex : search, $options: 'i'}} : {};
     let users = null;
     if (order) {
         users = await User.find(filter).sort({firstName: order});
